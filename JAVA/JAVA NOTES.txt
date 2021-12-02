@@ -1,0 +1,80 @@
+									******************************************
+									        FUNCTIONAL INTERFACES
+									******************************************
+1. What is java Functional interface?
+
+    A Java functional interface is an interface that contains exactly one abstract method. It is introduced in Java 8 
+    to support the Java Lambda Expression.
+
+    a. An Interface that contains exactly one abstract method is known as functional interface. It can have any number of 
+       default, static methods but can contain only one abstract method.
+    b. Functional Interface also known as Single Abstract Method Interfaces or SAM Interfaces. It is a new feature in 
+       Java 8, which helps to achieve functional programming approach.
+       
+2. Java built-in functional interfaces
+
+    The java.util.function package contains general purpose functional interfaces used by JDK and also available for end users like us. The interfaces defined in this package are annotated with @FunctionalInterface annotation.
+    Since java 1.8 onward following interfaces are functional interface, all these interfaces annotated with @FunctionalInterface.
+
+=> Runnable –> It contains only run() method
+=> Comparable –> It contains only compareTo() method
+=> ActionListener –> It contains only actionPerformed()
+=> Callable –> It contains only call() method.
+
+Following are the few important Functional Interfaces in java.util.function package.
+
+Predicate	     -> Represents a predicate (boolean-valued function) of one argument.
+Supplier	     -> Represents a supplier of results. Takes no argument and return a result.
+Function<T,R>    -> Represents a function that accepts one argument and produces a result.
+Consumer	     -> Represents an operation that accepts a single input argument and returns no result.
+BiConsumer<T,U>	 -> Represents an operation that accepts two input arguments and returns no result.
+BiFunction<T,U,R>->	Represents a function that accepts two arguments and produces a result.
+BiPredicate<T,U> ->	Represents a predicate (boolean-valued function) of two arguments. 
+
+3. @FunctionalInterface annotation
+
+    a. This annotation will be used to define Functional interface. This annotation is not the requirement for the java 
+       compiler to determine the interface is an functional interface but it helps the compiler to identify the accidental
+       violation of the our design intent.
+    b. This annotation will be very much useful for us while creating our custom functional interfaces. @FunctionalInterface
+       is used to verify the interface follows all of the rules that can make this interface as functional interface.
+    c. We can create functional interface without using @FunctionalInterface, but if we define multiple abstract methods 
+       compiler won’t throw any error while creating interface. If you define interface using @FunctionalInterface, 
+       it ensures the interface should contain single abstract method.
+
+4. @FunctionalInterface Rules
+
+a. Inside Functional Interface we can take only one abstract method, if we take more than one abstract method then 
+   compiler raise an error.
+b. Interface can declares an abstract method overriding one of the public method from java.lang.Object, that still 
+   can be considered as functional interface. The reason is any implementation class to this interface will have 
+   implementation for this abstract method either from super class (bare minimum java.lang.Object) class or defined 
+   by implementation class it self. In the below example toString() method declared as abstract which will be 
+   implemented in its concrete implementation class or at last derived from java.lang.Object class.	
+   
+5. Functional Interface with respect to Inheritance
+
+    a. If an interface extends java Functional Interface and child interface doesn’t contain any abstract method
+       then child interface is also Functional Interface. In this case In child interface we can’t define any new 
+       abstract methods
+    b. In the child interface we can define exactly same parent interface abstract method.								
+									
+									
+									
+									******************************************
+									        METHOD REFERENCE
+									******************************************
+									
+									
+Reference to a static method 	          ContainingClass::staticMethodName 	
+                                          Person::compareByAge MethodReferencesExamples::appendStrings
+                                
+Reference to an instance method of        containingObject::instanceMethodName 
+a particular object                       myComparisonProvider::compareByName myApp::appendStrings2
+                                                        
+Reference to an instance method of an     ContainingType::methodName 	
+arbitrary object of a particular type 	  String::concat String::compareToIgnoreCase
+                                                                                
+Reference to a constructor           	  ClassName::new 	HashSet::new
+
+
